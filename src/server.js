@@ -30,11 +30,19 @@ var note = {
     status: ""
 }
 
-app.get('/api/find/:title', async (req, res) => {
+app.get('/api/find/title/:title', async (req, res) => {
     const noteTitle = req.params.title;
-    console.log("Inside: " + noteTitle);
     await withDB(async db => {
         const articleInfo = await db.collection('notes').find({ title: noteTitle }).toArray();
+        await res.status(200).json(articleInfo);
+    });
+
+});
+
+app.get('/api/find/status/:status', async (req, res) => {
+    const noteStatus = req.params.status;
+    await withDB(async db => {
+        const articleInfo = await db.collection('notes').find({ status: noteStatus }).toArray();
         await res.status(200).json(articleInfo);
     });
 
