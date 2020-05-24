@@ -2,4 +2,4 @@
 
 use `npm install` then `npm run dev` to run on localhost 8000
 
-make sure `mongod` is running
+make sure `mongod` is running with `notesapp` db in use
